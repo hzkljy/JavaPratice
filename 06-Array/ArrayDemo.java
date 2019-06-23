@@ -77,10 +77,99 @@ public class ArrayDemo {
 			System.out.print(tmp + "、"); // 数组每个元素会保存在tmp变量中
 		}
 		
+		System.out.println();
+		System.out.println();
+		
 		/*
 			foreach好处：
 			简化for循环结构，也可以避免数组下标访问时由于处理不当造成的数组越界访问
 		*/
 		
+		/*
+			二维数组
+			定义语法：
+				动态初始化：数据类型 数组名称[][] =  new 数据类型[行的个数][列的个数]
+				静态初始化：数据类型 数组名称[][] = new 数据类型[][] {{值,值,值},{值,值,值}}
+		*/
+		int data5[][] = new int[][] {{1,2,3,4,5},{1,2,3},{5,6,7,8}};
+		
+		for(int x=0; x<data5.length; x++) { // 数组行
+			for(int y=0; y<data5[x].length; y++) { // 内层循环控制列
+				System.out.println("data5["+x+"]["+y+"]"+data5[x][y]); // 数组访问
+			}
+			System.out.println();
+		}
+		
+		System.out.println();
+		
+		// 使用foreach结构输出
+		for(int tmp[] : data5) { // 外层循环返回每一行数组
+			for(int num : tmp) { // 内层循环获取数组内容
+				System.out.print(num + "、");
+			}
+			System.out.println();
+		}
+		
+		System.out.println();
+		
+		/*
+			数组与方法
+		*/
+		// 使用方法接收数组引用
+		int data6[] = new int[] {1, 2, 3}; // 定义数组
+		printArray(data6); // 数组引用传递
+		
+		System.out.println();
+		
+		// 返回一个数组
+		int data7[] = initArray(); // 接收方法返回的数组
+		for(int x : data7) {
+			System.out.print(x + "、");
+		}
+		System.out.println();
+		for(int x=0; x<data7.length; x++) {
+			System.out.print(data7[x] + "、");
+		}
+		System.out.println();
+		
+		// 通过方法修改数组内容
+		int data8[] = new int[] {2, 4, 8, 16};
+		changeArray(data8);
+		for(int x : data8) {
+			System.out.print(x + "、");
+		}
+		System.out.println();
+		
+		
+	}
+	
+	/*
+		接收一个整形数组内容进行输出
+	*/
+	public static void printArray(int temp[]) {
+		/*for(int x=0; x<temp.length; x++) {
+			System.out.print(temp[x] + "、");
+		}*/
+		for(int x : temp) {
+			System.out.print(x + "、");
+		}
+		System.out.println();
+	}
+	
+	/*
+		返回一个初始化数组的内容
+	*/
+	public static int[] initArray() {
+		int arr[] = new int[] {1,3,6}; // 初始化一个数组
+		return arr; // 返回数组
+	}
+	
+	/*
+		修改数组内容
+	*/
+	public static void changeArray(int arr[]) {
+		for(int x=0; x<arr.length; x++) {
+			arr[x] *= 2; // 将数组内容*2
+		}
 	}
 }
